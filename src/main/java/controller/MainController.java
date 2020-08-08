@@ -2,31 +2,21 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
-import main.Main;
+import javafx.scene.control.TextField;
 
-import java.io.IOException;
+import static main.Main.scManager;
 
-public class MainController implements Controller {
+public class MainController {
+    public static final String FXML = "scene/main.fxml";
+
     @FXML
-    private Button btn;
-
-    public void switchTo() {
-        Parent root;
-        try {
-            root = FXMLLoader.load(MainController.class.getResource("main.fxml"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Scene scene = new Scene(root);
-        Main.stage.setScene(scene);
-    }
+    private TextField NameField;
 
     public void pressStartButton(ActionEvent action) {
+        String name = NameField.getText();
 
+        //TODO: Store name in local SQLite database.
+
+        scManager.setScene(HomeController.FXML);
     }
 }

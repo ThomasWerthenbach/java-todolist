@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <ImageView fitHeight="400.0" fitWidth="662.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../pictures/MainBackground.jpg" />
+         <Image url="@../../pictures/MainBackground.jpg"/>
       </image>
    </ImageView>
-   
-   <TextField layoutX="157.0" layoutY="179.0" promptText="Name">
-      <font>
-         <Font name="Comic Sans MS" size="21.0" />
-      </font></TextField>
+
+    <TextField fx:id="NameField" layoutX="157.0" layoutY="179.0" promptText="Name">
+        <font>
+            <Font name="Comic Sans MS" size="21.0"/>
+        </font>
+    </TextField>
    <Button fx:id="btn" layoutX="228.0" layoutY="264.0" mnemonicParsing="false" onAction="#pressStartButton" prefHeight="36.0" prefWidth="147.0" text="Start!">
       <font>
          <Font name="Comic Sans MS" size="17.0" />
