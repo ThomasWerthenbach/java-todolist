@@ -1,6 +1,6 @@
 package controller;
 
-import Util.TodoListItem;
+import util.TodoListItem;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.ListView;

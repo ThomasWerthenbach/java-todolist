@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneManager {
-    private Stage stage;
+    private Stage stage = null;
 
     public SceneManager setStage(Stage stage) {
         this.stage = stage;
@@ -17,6 +17,8 @@ public class SceneManager {
     }
 
     public SceneManager setResizable(boolean resizable) {
+        if (this.stage == null)
+            throw new NullPointerException("Stage was not yet set.");
         this.stage.setResizable(resizable);
         return this;
     }
@@ -33,7 +35,15 @@ public class SceneManager {
         return this;
     }
 
+    public Scene getScene() {
+        if (this.stage == null)
+            throw new NullPointerException("Stage was not yet set.");
+        return this.stage.getScene();
+    }
+
     public void show() {
+        if (this.stage == null)
+            throw new NullPointerException("Stage was not yet set.");
         this.stage.show();
     }
 
