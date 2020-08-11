@@ -9,12 +9,29 @@ import java.sql.SQLException;
 
 import static main.Main.scManager;
 
+/**
+ * Controls all functionality related to graphical elements on the MainScreen (screen that is being displayed on initial
+ * start-up of the application).
+ *
+ * @Author Thomas Werthenbach
+ */
 public class MainController {
+    /**
+     * The path to the FXML file containing the graphical elements.
+     */
     public static final String FXML = "scene/main.fxml";
 
+    /**
+     * Is a reference to the "NameField"-TextField in the FXML file.
+     */
     @FXML
     private TextField NameField;
 
+    /**
+     * Is triggered when the "Start"-button is pressed.
+     * Stores the name of the current user in the database.
+     * @param action
+     */
     public void pressStartButton(ActionEvent action) {
         String name = NameField.getText();
 
