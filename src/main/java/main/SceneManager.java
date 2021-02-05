@@ -21,6 +21,11 @@ public class SceneManager {
     private Stage stage = null;
 
     /**
+     * The filename of the file containing the FXML for the current Scene.
+     */
+    private String currentFileName = null;
+
+    /**
      * Sets the stage of the SceneManager.
      * @param stage is the new Stage.
      * @return the current SceneManager. (See the "Builder"-design pattern)
@@ -48,6 +53,7 @@ public class SceneManager {
      * @return the current SceneManager. (See the "Builder"-design pattern)
      */
     public SceneManager setScene(String fileName) {
+        this.currentFileName = fileName;
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource(fileName));
@@ -84,5 +90,12 @@ public class SceneManager {
      */
     public void setCursor(Cursor cursor) {
         this.stage.getScene().setCursor(cursor);
+    }
+
+    /**
+     * Gets the filename of the FXML of the current scene.
+     */
+    public String getCurrentFileName() {
+        return this.currentFileName;
     }
 }

@@ -56,4 +56,12 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Is used to set the Connection object. SHOULD ONLY BE USED FOR TESTING PURPOSES.
+     * @param connection the new connection object.
+     */
+    public static void setConn(Connection connection) {
+        conn = connection;
+    }
 }

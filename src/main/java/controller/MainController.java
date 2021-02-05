@@ -4,6 +4,7 @@ import database.ExecQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import util.User;
 
 import java.sql.SQLException;
 
@@ -38,13 +39,14 @@ public class MainController {
         ExecQuery query = new ExecQuery();
         try {
             query
-                    .Prepare(ExecQuery.Query.STORE_NAME)
+                    .prepare(ExecQuery.Query.STORE_KEY)
                     .setParam("name")
                     .setParam(name)
                     .execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        User.name = name; //TODO user should not go to home screen when database connection failed
 
         scManager.setScene(HomeController.FXML);
     }

@@ -23,7 +23,7 @@ public class ExecQuery {
     private ResultSet rs;
 
     /**
-     * keeps track of which parameter is to be filled in a PreparedStatement.
+     * Keeps track of which parameter is to be filled in a PreparedStatement.
      */
     private int index;
 
@@ -31,8 +31,8 @@ public class ExecQuery {
      * Contains an element for every query that can be executed by this class.
      */
     public enum Query {
-        STORE_NAME,
-        GET_NAME
+        STORE_KEY,
+        GET_KEY
     }
 
     /**
@@ -42,8 +42,8 @@ public class ExecQuery {
     private static final HashMap<Query, String> queryHashMap = new HashMap<>();
 
     static {
-        queryHashMap.put(Query.STORE_NAME, "INSERT INTO def (key, value) VALUES(?, ?);");
-        queryHashMap.put(Query.GET_NAME, "SELECT value as name, count(*) as rowcount from def where key='name'");
+        queryHashMap.put(Query.STORE_KEY, "INSERT INTO def (key, value) VALUES(?, ?);");
+        queryHashMap.put(Query.GET_KEY, "SELECT value as name, count(*) as rowcount from def where key='name';");
     }
 
     /**
@@ -54,7 +54,7 @@ public class ExecQuery {
      * @return this current ExecQuery. (See Builder-design pattern)
      * @throws SQLException may be thrown when the query contains a syntax error.
      */
-    public ExecQuery Prepare(Query query) throws SQLException {
+    public ExecQuery prepare(Query query) throws SQLException {
         this.prep = DatabaseConnection.getConn().prepareStatement(queryHashMap.get(query));
         this.index = 1;
         return this;

@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
 import static main.Main.scManager;
 
@@ -40,35 +39,31 @@ public class HomeController {
     /**
      * Is triggered when the user moves the mouse such that it "entered" the area of the screen filled by a specific
      * graphical element.
-     * @param event
      */
-    public void mouseEnterAddButton(MouseEvent event) {
+    public void mouseEnterAddButton() {
         scManager.setCursor(Cursor.HAND);
     }
 
     /**
      * Is triggered when the user moves the mouse such that it "exited" the area of the screen filled by a specific
      * graphical element.
-     * @param event
      */
-    public void mouseExitAddButton(MouseEvent event) {
+    public void mouseExitAddButton() {
         scManager.setCursor(Cursor.DEFAULT);
     }
 
     /**
      * Is triggered when the user releases the left-mouse-button when it is being hold while hovering over a specific
      * graphical element.
-     * @param e
      */
-    public void mouseRelease(MouseEvent e) {
+    public void mouseRelease() {
         addButton.setVisible(true);
     }
 
     /**
      * Is triggered when the user presses the left-mouse-button while hovering over a specific graphical element.
-     * @param actionEvent
      */
-    public void mousePress(MouseEvent actionEvent) {
+    public void mousePress() {
         todoList.setFocusTraversable(false);
         addButton.setVisible(false);
         todoList.getItems().add(new TodoListItem(counter++));
