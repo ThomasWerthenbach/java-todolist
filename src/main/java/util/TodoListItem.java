@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * Symbolises an item in the list of todo's on the main screen.
+ *
+ * @author Thomas Werthenbach
  */
 public class TodoListItem extends ListCell<Todo> {
     /**
@@ -30,7 +32,7 @@ public class TodoListItem extends ListCell<Todo> {
     public TodoListItem(int id) {
         this.id = id;
         try {
-            l = FXMLLoader.load(Main.class.getResource("scene/TodoListItem.fxml"));
+            l = FXMLLoader.load(Main.class.getResource("subitems/TodoListItem.fxml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

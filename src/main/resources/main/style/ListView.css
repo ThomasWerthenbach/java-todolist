@@ -1,18 +1,11 @@
 .list-view {
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(235, 211, 190, 0);
+}
+
+.parent {
+    -fx-background-color: rgba(235, 211, 190, 1);
 }
 
 .list-cell {
-    -fx-background-color: rgba(255, 255, 255, .7);
-}
-
-.button {
-    /*-fx-background-radius: 5em;*/
-    /*-fx-min-width: 50px;*/
-    /*-fx-min-height: 50px;*/
-    /*-fx-max-width: 50px;*/
-    /*-fx-max-height: 50px;*/
-    /*-fx-border-insets: 0 0 0 0;*/
-    /*-fx-background-insets: 0 0 0 0;*/
-    /*-fx-border-image-insets: 0 0 0 0;*/
+    -fx-background-color: rgba(255, 255, 255, 0);
 }

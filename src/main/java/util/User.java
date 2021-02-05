@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * Symbolises the user that is currently logged in and contains functionality related to the user.
  *
- * @Author Thomas Werthenbach
+ * @author Thomas Werthenbach
  */
 public class User {
     /**

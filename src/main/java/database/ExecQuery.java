@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Will manage all query's executed on the database.
  * Makes use of the "builder"-design pattern to ease development processes and improve code styling.
  *
- * @Author Thomas Werthenbach
+ * @author Thomas Werthenbach
  */
 public class ExecQuery {
     /**

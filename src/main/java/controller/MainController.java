@@ -14,9 +14,10 @@ import static main.Main.scManager;
  * Controls all functionality related to graphical elements on the MainScreen (screen that is being displayed on initial
  * start-up of the application).
  *
- * @Author Thomas Werthenbach
+ * @author Thomas Werthenbach
  */
-public class MainController {
+public class MainController implements Controller {
+
     /**
      * The path to the FXML file containing the graphical elements.
      */
@@ -27,6 +28,12 @@ public class MainController {
      */
     @FXML
     private TextField NameField;
+
+    /**
+     * This method is called when the scene, belonging to this controller, is shown.
+     */
+    public void onShowScene() {
+    }
 
     /**
      * Is triggered when the "Start"-button is pressed.

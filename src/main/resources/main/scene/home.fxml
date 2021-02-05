@@ -4,18 +4,23 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/ListView.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../style/ListView.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <ImageView fitHeight="417.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="417.0" fitWidth="600.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../pictures/MainBackground.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="addButton" fitHeight="72.0" fitWidth="62.0" layoutX="14.0" layoutY="14.0" onMouseEntered="#mouseEnterAddButton" onMouseExited="#mouseExitAddButton" onMousePressed="#mousePress" onMouseReleased="#mouseRelease" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../pictures/button.jpg" />
-         </image>
-      </ImageView>
-      <ListView fx:id="todoList" layoutX="100.0" layoutY="14.0" prefHeight="362.0" prefWidth="481.0" />
+      <ListView fx:id="todoList" layoutY="61.0" prefHeight="339.0" prefWidth="600.0" />
+      <HBox prefHeight="59.0" prefWidth="600.0">
+         <children>
+            <ImageView fx:id="addButton" fitHeight="72.0" fitWidth="62.0" onMouseEntered="#mouseEnterAddButton" onMouseExited="#mouseExitAddButton" onMousePressed="#mousePress" onMouseReleased="#mouseRelease" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/baseline_add_circle_black_48dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Pane fx:id="AddTodoPane" layoutX="11.0" layoutY="61.0" prefHeight="217.0" prefWidth="579.0" visible="false" />
    </children>
 </AnchorPane>

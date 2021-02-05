@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="77.0" prefWidth="554.0" styleClass="hbox" stylesheets="@../style/TodoListItem.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="77.0" prefWidth="500.0" styleClass="pane" stylesheets="@../style/TodoListItem.css" HBox.hgrow="ALWAYS">
+         <children>
+            <Button fx:id="button" layoutX="23.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="64.0" text="Button" />
+         </children>
+      </Pane>
+   </children>
+</HBox>

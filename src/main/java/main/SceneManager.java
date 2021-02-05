@@ -1,5 +1,6 @@
 package main;
 
+import controller.Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
@@ -9,10 +10,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Manages all which Scene is being displayed on the screen.
+ * Manages which Scene is being displayed to the user.
  * Makes use of the "builder"-design pattern to ease development processes and improve code styling.
  *
- * @Author Thomas Werthenbach
+ * @author Thomas Werthenbach
  */
 public class SceneManager {
     /**
@@ -48,20 +49,26 @@ public class SceneManager {
     }
 
     /**
-     * Sets the Scene of the current stage.
+     * Sets the Scene of the current stage and calls the method onShowScene.
      * @param fileName of the FXML file of the new Scene.
      * @return the current SceneManager. (See the "Builder"-design pattern)
      */
     public SceneManager setScene(String fileName) {
         this.currentFileName = fileName;
         Parent root;
+        FXMLLoader fxmlLoader;
+        fxmlLoader = new FXMLLoader(getClass().getResource(fileName));
         try {
-            root = FXMLLoader.load(getClass().getResource(fileName));
+            root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         Scene scene = new Scene(root);
         this.stage.setScene(scene);
+        Controller control = fxmlLoader.getController();
+        if (control != null)
+            control.onShowScene();
+
         return this;
     }
 

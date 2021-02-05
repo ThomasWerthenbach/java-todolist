@@ -10,7 +10,7 @@ import java.sql.Statement;
  * Keeps track of the connection to the database.
  * Contains the "singleton"-design pattern to make sure only one instance of a connection to the database can exist.
  *
- * @Author Thomas Werthenbach
+ * @author Thomas Werthenbach
  */
 public class DatabaseConnection {
     /**
@@ -51,6 +51,10 @@ public class DatabaseConnection {
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "key text," +
                     "value text" +
+                    ")");
+            stmt.execute("CREATE TABLE IF NOT EXISTS todos (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "description text" +
                     ")");
         } catch (SQLException e) {
             e.printStackTrace();

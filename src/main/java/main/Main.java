@@ -9,6 +9,8 @@ import util.User;
 /**
  * Is the main class of the TodoList Application.
  * Will launch the JavaFX application from here.
+ *
+ * @author Thomas Werthenbach
  */
 public class Main extends Application {
     /**
