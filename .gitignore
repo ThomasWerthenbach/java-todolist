@@ -1,6 +1,5 @@
 .idea
 .gradle
-gradle*
+gradle/*
 build
-gradlew*
 *.db
