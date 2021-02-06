@@ -26,6 +26,8 @@ public class SceneManager {
      */
     private String currentFileName = null;
 
+    private Controller controller;
+
     /**
      * Sets the stage of the SceneManager.
      * @param stage is the new Stage.
@@ -65,9 +67,9 @@ public class SceneManager {
         }
         Scene scene = new Scene(root);
         this.stage.setScene(scene);
-        Controller control = fxmlLoader.getController();
-        if (control != null)
-            control.onShowScene();
+        this.controller = fxmlLoader.getController();
+        if (this.controller != null)
+            this.controller.onShowScene();
 
         return this;
     }
@@ -104,5 +106,13 @@ public class SceneManager {
      */
     public String getCurrentFileName() {
         return this.currentFileName;
+    }
+
+    /**
+     * Gets the controller of the current scene.
+     * @return The controller of the current scene.
+     */
+    public Controller getController() {
+        return this.controller;
     }
 }

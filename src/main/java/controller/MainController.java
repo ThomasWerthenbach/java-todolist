@@ -32,6 +32,7 @@ public class MainController implements Controller {
     /**
      * This method is called when the scene, belonging to this controller, is shown.
      */
+    @Override
     public void onShowScene() {
     }
 

@@ -1,8 +1,11 @@
 package database;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.HashMap;
 
 /**
@@ -32,7 +35,10 @@ public class ExecQuery {
      */
     public enum Query {
         STORE_KEY,
-        GET_KEY
+        GET_KEY,
+        STORE_TODO,
+        GET_LATEST_TODO,
+        GET_ALL_TODOS
     }
 
     /**
@@ -42,8 +48,11 @@ public class ExecQuery {
     private static final HashMap<Query, String> queryHashMap = new HashMap<>();
 
     static {
-        queryHashMap.put(Query.STORE_KEY, "INSERT INTO def (key, value) VALUES(?, ?);");
-        queryHashMap.put(Query.GET_KEY, "SELECT value as name, count(*) as rowcount from def where key='name';");
+        queryHashMap.put(Query.STORE_KEY, "INSERT INTO def (key, value) VALUES (?, ?);");
+        queryHashMap.put(Query.GET_KEY, "SELECT value as name, count(*) as rowcount from def where key=?;");
+        queryHashMap.put(Query.STORE_TODO, "INSERT INTO todos (description, deadline) VALUES (?, ?);");
+        queryHashMap.put(Query.GET_LATEST_TODO, "select max(id) as id from todos;");
+        queryHashMap.put(Query.GET_ALL_TODOS, "select * from todos;");
     }
 
     /**
@@ -72,19 +81,44 @@ public class ExecQuery {
     }
 
     /**
+     * Is used to set a LocalDate parameter in the prepared statement,
+     * @param val is to be included in the prepared statement.
+     * @return this current ExecQuery. (See Builder-design pattern)
+     * @throws SQLException may be thrown when the parameter could not be included in the prepared statement.
+     */
+    public ExecQuery setParam(LocalDate val) throws SQLException {
+        this.prep.setDate(index++, Date.valueOf(val));
+        return this;
+    }
+
+    /**
+     * Is used to set a null value in the prepared statement,
+     * @return this current ExecQuery. (See Builder-design pattern)
+     * @throws SQLException may be thrown when the null value could not be included in the prepared statement.
+     */
+    public ExecQuery setParamNull() throws SQLException {
+        this.prep.setNull(index++, java.sql.Types.NULL);
+        return this;
+    }
+
+    /**
      * Is used to execute a prepared statement on the database.
+     * @return this current ExecQuery. (See Builder-design pattern)
      * @throws SQLException may be thrown when the prepared statement could not be executed.
      */
-    public void execute() throws SQLException {
+    public ExecQuery execute() throws SQLException {
         this.prep.execute();
+        return this;
     }
 
     /**
      * Is used to execute a prepared statement, which expects a result, on the database.
+     * @return this current ExecQuery. (See Builder-design pattern)
      * @throws SQLException may be thrown when the prepared statement could not be executed.
      */
-    public void executeQuery() throws SQLException {
-        rs = this.prep.executeQuery();
+    public ExecQuery executeQuery() throws SQLException {
+        this.rs = this.prep.executeQuery();
+        return this;
     }
 
     /**
@@ -105,5 +139,15 @@ public class ExecQuery {
      */
     public int getInt(String key) throws SQLException {
         return this.rs.getInt(key);
+    }
+
+    /**
+     * Is used to retrieve a LocalDate value from the query result.
+     * @param key is the key to which the value in the ResultSet should correspond.
+     * @return the LocalDate value from the query result.
+     * @throws SQLException may be thrown when the value could not be extracted from the query result.
+     */
+    public LocalDate getDate(String key) throws SQLException {
+        return this.rs.getDate(key).toLocalDate();
     }
 }

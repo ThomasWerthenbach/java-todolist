@@ -17,12 +17,7 @@ import static main.Main.scManager;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-public class MainControllerTest extends ApplicationTest {
-    public void keyBoardType(String text) {
-        for (int i = 0; i < text.length(); i++) {
-            type(KeyCode.getKeyCode("" + text.charAt(i)));
-        }
-    }
+public class MainControllerTest extends BaseApplicationTest {
 
     @Test
     public void pressStartButtonTest() throws Exception {
@@ -50,7 +45,7 @@ public class MainControllerTest extends ApplicationTest {
 
         verify(prep, times(1)).execute();
         verify(prep, times(1)).executeQuery();
-        verify(prep, times(1)).setString(1, "name");
+        verify(prep, times(2)).setString(1, "name");
         verify(prep, times(1)).setString(2, "testname");
         verify(mockConn, times(2)).prepareStatement(Mockito.anyString());
     }

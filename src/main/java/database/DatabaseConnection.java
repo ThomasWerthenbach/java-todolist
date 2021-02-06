@@ -54,7 +54,8 @@ public class DatabaseConnection {
                     ")");
             stmt.execute("CREATE TABLE IF NOT EXISTS todos (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "description text" +
+                    "description text not null," +
+                    "deadline date" +
                     ")");
         } catch (SQLException e) {
             e.printStackTrace();

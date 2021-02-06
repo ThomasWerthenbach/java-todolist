@@ -2,6 +2,7 @@ package util;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 import main.Main;
@@ -29,7 +30,7 @@ public class TodoListItem extends ListCell<Todo> {
      * Will load the graphical elements from the FXML files into the HBox.
      * @param id the id of the current TodoListItem.
      */
-    public TodoListItem(int id) {
+    public TodoListItem(int id, Todo todo) {
         this.id = id;
         try {
             l = FXMLLoader.load(Main.class.getResource("subitems/TodoListItem.fxml"));
@@ -37,9 +38,13 @@ public class TodoListItem extends ListCell<Todo> {
             throw new RuntimeException(e);
         }
         setGraphic(l);
-        Button button = (Button) l.lookup("#button");
+        Button button = (Button) l.lookup("#DoneButton");
         button.setOnMouseClicked(mouseEvent -> print());
         button.setId("button_" + id);
+
+        Label label = (Label) l.lookup("#TodoLabel");
+        label.setText(todo.getDescription());
+
     }
 
     /**

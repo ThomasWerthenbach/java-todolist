@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="217.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="217.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.subitems.AddPopupController">
    <children>
-      <Pane fx:id="AddTodoPane" layoutY="25.0" prefHeight="204.0" prefWidth="579.0" styleClass="add-popup" stylesheets="@../style/AddPopup.css" />
+      <Pane fx:id="AddTodoPane" layoutY="25.0" prefHeight="204.0" prefWidth="579.0" styleClass="add-popup" stylesheets="@../style/AddPopup.css">
+         <children>
+            <Label layoutX="20.0" layoutY="14.0" prefHeight="33.0" prefWidth="362.0" text="Add a new todo" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="descriptionTextField" layoutX="20.0" layoutY="60.0" prefHeight="33.0" prefWidth="540.0" promptText="Description" />
+            <DatePicker fx:id="deadlineDatePicker" layoutX="20.0" layoutY="102.0" />
+            <Button fx:id="AddTodoPopupButton" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onMousePressed="#AddTodoPopupButtonClicked" text="Add todo" />
+         </children></Pane>
       <ImageView fitHeight="22.0" fitWidth="28.0" layoutX="14.0" layoutY="3.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../pictures/triangle.png" />

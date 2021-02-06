@@ -1,8 +1,13 @@
 package controller;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import main.Main;
+import org.w3c.dom.Text;
+import util.Todo;
 import util.TodoListItem;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -32,11 +37,6 @@ public class HomeController implements Controller {
     public static final String FXML = "scene/home.fxml";
 
     /**
-     * Keeps track of the number of created todo's.
-     */
-    private int counter = 0;
-
-    /**
      * Is a reference to the "addButton"-ImageView in the FXML file.
      */
     @FXML
@@ -46,19 +46,20 @@ public class HomeController implements Controller {
      * Is a reference to the "todoList"-ListView in the FXML file.
      */
     @FXML
-    private ListView<TodoListItem> todoList;
+    public ListView<TodoListItem> todoList;
 
     /**
      * This method is called when the scene, belonging to this controller, is shown.
      * It loads the FXML file for the popup in which the user can add todo items.
      */
+    @Override
     public void onShowScene() {
         Pane newPane;
         try {
             newPane = FXMLLoader.load(Main.class.getResource("subitems/AddPopup.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
-            throw new NullPointerException("Pane not found.");
+            throw new NullPointerException("Could not load pane.");
         }
         AddTodoPane.getChildren().add(newPane);
     }
@@ -91,11 +92,17 @@ public class HomeController implements Controller {
      */
     public void mousePress() {
         AddTodoPane.setVisible(!AddTodoPane.isVisible());
+        if (!AddTodoPane.isVisible())
+            AddTodoPane.lookup("#descriptionTextField").setStyle("");
+    }
 
-//        todoList.setFocusTraversable(false);
-//        addButton.setVisible(false);
-//        TodoListItem item = new TodoListItem(counter++);
-//        todoList.getItems().add(item);
-//        todoList.setFocusTraversable(true);
+    /**
+     * Creates a todoitem. It will store it in the database and put it in the listview on the scene.
+     * @param todo is the todoitem to be stored.
+     */
+    public void addTodo(Todo todo) {
+        int id = todo.storeTodo();
+        TodoListItem item = new TodoListItem(id, todo);
+        todoList.getItems().add(item);
     }
 }

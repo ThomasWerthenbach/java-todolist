@@ -21,8 +21,10 @@ public class User {
      */
     public static String loadName() {
         try {
-            ExecQuery query = new ExecQuery().prepare(ExecQuery.Query.GET_KEY);
-            query.executeQuery();
+            ExecQuery query = new ExecQuery()
+                    .prepare(ExecQuery.Query.GET_KEY)
+                    .setParam("name")
+                    .executeQuery();
             if (query.getInt("rowcount") > 0) {
                 name = query.getString("name");
                 return name;
